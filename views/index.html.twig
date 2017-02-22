@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <meta charset="utf-8">
+    <title>To Do List</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to To Do List</h1>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Urgent/Important</h2>
+                            </div>
+                            <div class="panel-body">
+                                {% for task in tasks %}
+                                    {% if task.getCoveyScore == 1 %}
+                                        <p>
+                                            {{ task.getDescription }} : {{ task.getDate }}
+                                        </p>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Not Urgent/Important</h2>
+                            </div>
+                            <div class="panel-body">
+                                {% for task in tasks %}
+                                    {% if task.getCoveyScore == 2 %}
+                                        <p>
+                                            {{ task.getDescription }} : {{ task.getDate }}
+                                        </p>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Urgent/Not Important</h2>
+                            </div>
+                            <div class="panel-body">
+                                {% for task in tasks %}
+                                    {% if task.getCoveyScore == 3 %}
+                                        <p>
+                                            {{ task.getDescription }} : {{ task.getDate }}
+                                        </p>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Not Urgent/Not Important</h2>
+                            </div>
+                            <div class="panel-body">
+                                {% for task in tasks %}
+                                    {% if task.getCoveyScore == 4 %}
+                                        <p>
+                                            {{ task.getDescription }} : {{ task.getDate }}
+                                        </p>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+
+                <p>Create a new task:</p>
+
+                <form action="/add_task" method="post">
+                    <label for="description">Enter a description:</label>
+                    <input id="description" name="description" type="text">
+
+                    <label for="importance">How important is this?</label>
+                    <select id="importance" name="importance" type="text">
+                        <option value="1">Important</option>
+                        <option value="2">Not Too Important</option>
+                    </select>
+
+                    <label for="due-date">Due-date for task:</label>
+                    <input id="due-date" name="due-date" type="date">
+
+                    <label for="category">Category for task:</label>
+                    <input id="category" name="category" type="text">
+
+                    <button type="submit">Add task</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>
