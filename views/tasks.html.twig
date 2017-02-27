@@ -1,5 +1,6 @@
 <html>
 <head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
     <title>To Do List</title>
 </head>
 <body>
@@ -8,7 +9,7 @@
         <p>Here are all yor tasks:</p>
         <ul>
             {% for task in tasks %}
-                <li>{{ task.getDescription }}</li>
+                <li><a href="/tasks/{{ task.getId }}">{{ task.getDescription }}</a></li>
             {% endfor %}
         </ul>
     {% endif %}
@@ -22,5 +23,7 @@
     <form action='/delete_tasks' method='post'>
         <button type='submit'>Clear</button>
     </form>
+
+    <p><a href='/'>Home</a></p>
 </body>
 </html>
