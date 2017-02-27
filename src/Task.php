@@ -3,19 +3,33 @@
     {
         private $description;
         private $id;
+        private $completed;
 
-        function __construct($description, $id = null)
+        function __construct($description, $id = null, $completed)
         {
             $this->description = $description;
             $this->id = $id;
+            $this->completed = $completed;
         }
+
         function setDescription($new_description)
         {
             $this->description = (string) $new_description;
         }
+
         function getDescription()
         {
             return $this->description;
+        }
+
+        function setCompleted($new_completed)
+        {
+            $this->completed = $new_completed;
+        }
+
+        function getCompleted()
+        {
+            return $this->completed;
         }
 
         function save()
@@ -31,7 +45,8 @@
             foreach($returned_tasks as $task) {
                 $description = $task['description'];
                 $id = $task['id'];
-                $new_task = new Task($description, $id);
+                $completed = $task['completed'];
+                $new_task = new Task($description, $id, $completed);
                 array_push($tasks, $new_task);
             }
             return $tasks;

@@ -95,6 +95,5 @@
         return $app['twig']->render('category.html.twig', array('category' => $category, 'tasks' => $category->getTasks(), 'all_tasks' => Task::getAll()));
     });
 
-
     return $app;
 ?>
