@@ -121,7 +121,6 @@
             $test_category2 = new Category($name2, $id);
             $test_category2->save();
 
-
             //Act
             $test_category->delete();
 
@@ -192,7 +191,7 @@
           $test_category->addTask($test_task2);
 
           //Assert
-          $this->assertEquals($test_category->getTasks(), [$test_task, $test_task2]); 
+          $this->assertEquals($test_category->getTasks(), [$test_task, $test_task2]);
         }
     }
 ?>
